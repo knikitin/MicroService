@@ -1,0 +1,10 @@
+server:
+  context-path: /cities
+  port: 8070
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres777
+    driver-class-name: org.postgresql.Driver
