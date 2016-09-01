@@ -1,5 +1,7 @@
 package com.example;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,9 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class HelloController {
+    final Logger slf4jLog = LoggerFactory.getLogger(HelloController.class);
 
     @RequestMapping("/")
     public String returnHelloWorld(){
+        slf4jLog.info("Return Hello World");
+
         return "Hello World";
     };
 }

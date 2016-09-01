@@ -1,6 +1,8 @@
 package com.example.web;
 
 import com.example.dto.Cities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -17,6 +19,8 @@ import java.util.List;
  */
 @Controller
 public class CitiesPageController {
+    final Logger slf4jLog = LoggerFactory.getLogger(CitiesPageController.class);
+
     private RestTemplate restTemplate = new RestTemplate();
 
     @Autowired
@@ -32,6 +36,8 @@ public class CitiesPageController {
 
     @RequestMapping("/")
     public String cities( Model model) {
+        slf4jLog.info("Get from DB all cities");
+
         URI uri = getServiceUri("a-citiesfromdb-client");
         List<Cities> resultList = restTemplate.getForObject(uri.toString()+"cities", List.class);
 

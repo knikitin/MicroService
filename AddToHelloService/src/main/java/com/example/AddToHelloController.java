@@ -1,5 +1,7 @@
 package com.example;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -18,6 +20,8 @@ public class AddToHelloController {
 
     private RestTemplate restTemplate = new RestTemplate();
 
+    private Logger slf4jLog = LoggerFactory.getLogger(AddToHelloController.class);
+
     @Autowired
     private DiscoveryClient discoveryClient;
 
@@ -31,8 +35,11 @@ public class AddToHelloController {
 
     @RequestMapping("/")
     public String returnHelloWorld(){
+        slf4jLog.info("Get string from other service");
         URI uri = getServiceUri("a-helloworld-client");
         String resultStr = restTemplate.getForObject(uri.toString(), String.class);
+
+        slf4jLog.info("Return string with additive");
         return "Add some " + resultStr;
     }
 }
