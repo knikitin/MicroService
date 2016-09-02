@@ -39,7 +39,13 @@ public class CitiesPageController {
         slf4jLog.info("Get from DB all cities");
 
         URI uri = getServiceUri("a-citiesfromdb-client");
-        List<Cities> resultList = restTemplate.getForObject(uri.toString()+"cities", List.class);
+        List<Cities> resultList;
+
+        if (uri != null ) {
+            resultList = restTemplate.getForObject(uri.toString()+"/cities", List.class);
+        } else {
+            throw new IllegalStateException("Not found service to get data form DB");
+        }
 
         model.addAttribute("cities", resultList);
 
