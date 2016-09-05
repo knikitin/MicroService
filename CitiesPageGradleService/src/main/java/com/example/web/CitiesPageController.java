@@ -9,6 +9,7 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
@@ -34,7 +35,7 @@ public class CitiesPageController {
         return null;
     }
 
-    @RequestMapping("/")
+    @RequestMapping(value = "/", method= RequestMethod.GET)
     public String cities( Model model) {
         slf4jLog.info("Get from DB all cities");
 
