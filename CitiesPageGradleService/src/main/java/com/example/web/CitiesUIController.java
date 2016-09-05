@@ -19,8 +19,8 @@ import java.util.List;
  * Created by kostya.nikitin on 8/31/2016.
  */
 @Controller
-public class CitiesPageController {
-    final Logger slf4jLog = LoggerFactory.getLogger(CitiesPageController.class);
+public class CitiesUIController {
+    final Logger slf4jLog = LoggerFactory.getLogger(CitiesUIController.class);
 
     private RestTemplate restTemplate = new RestTemplate();
 

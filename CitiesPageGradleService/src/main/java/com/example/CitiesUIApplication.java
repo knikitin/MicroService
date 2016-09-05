@@ -9,8 +9,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-public class CitiesPageGradleServiceApplication {
+public class CitiesUIApplication {
     public static void main(String[] args) {
-        SpringApplication.run(CitiesPageGradleServiceApplication.class, args);
+        SpringApplication.run(CitiesUIApplication.class, args);
     }
 }
