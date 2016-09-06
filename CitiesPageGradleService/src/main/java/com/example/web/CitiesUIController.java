@@ -1,6 +1,7 @@
 package com.example.web;
 
 import com.example.dto.Cities;
+import com.example.service.CitiesUIService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,31 +23,14 @@ import java.util.List;
 public class CitiesUIController {
     final Logger slf4jLog = LoggerFactory.getLogger(CitiesUIController.class);
 
-    private RestTemplate restTemplate = new RestTemplate();
-
     @Autowired
-    private DiscoveryClient discoveryClient;
-
-    public URI getServiceUri(String serviceId) {
-        List<ServiceInstance> list = discoveryClient.getInstances(serviceId);
-        if (list != null && list.size() > 0 ) {
-            return list.get(0).getUri();
-        }
-        return null;
-    }
+    CitiesUIService citiesUIService;
 
     @RequestMapping(value = "/", method= RequestMethod.GET)
     public String cities( Model model) {
         slf4jLog.info("Get from DB all cities");
 
-        URI uri = getServiceUri("a-citiesfromdb-client");
-        List<Cities> resultList;
-
-        if (uri != null ) {
-            resultList = restTemplate.getForObject(uri.toString()+"/cities", List.class);
-        } else {
-            throw new IllegalStateException("Not found service to get data form DB");
-        }
+        List<Cities> resultList = citiesUIService.getCities();
 
         model.addAttribute("cities", resultList);
 
