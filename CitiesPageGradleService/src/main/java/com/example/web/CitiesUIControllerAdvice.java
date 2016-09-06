@@ -13,8 +13,8 @@ import java.net.ConnectException;
  * Created by kostya.nikitin on 9/2/2016.
  */
 @RestControllerAdvice
-public class CitiesPageControllerAdvice {
-    final Logger slf4jLog = LoggerFactory.getLogger(CitiesPageControllerAdvice.class);
+public class CitiesUIControllerAdvice {
+    final Logger slf4jLog = LoggerFactory.getLogger(CitiesUIControllerAdvice.class);
 
     @ExceptionHandler(ConnectException.class)
     ResponseEntity<?> notConnectionToServiceGetDataFromBDExceptionHandler(Throwable ex) {

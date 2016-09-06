@@ -6,9 +6,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-public class CitiesFromDbServiceApplication {
+public class CitiesDBApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CitiesFromDbServiceApplication.class, args);
+		SpringApplication.run(CitiesDBApplication.class, args);
 	}
 }

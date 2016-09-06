@@ -6,4 +6,9 @@ package com.example.dto;
 public class Cities {
     long id;
     String cityname;
+
+    public Cities(long id, String cityname) {
+        this.id = id;
+        this.cityname = cityname;
+    }
 }
