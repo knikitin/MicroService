@@ -1,6 +1,6 @@
 spring:
   application:
-    name:registrationserver
+    name: registrationserver
   cloud:
     config:
       uri: http://localhost:8888
