@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
@@ -15,6 +16,7 @@ import java.util.List;
 /**
  * Created by kostya.nikitin on 9/6/2016.
  */
+@Service
 public class CitiesUIServiceImpl implements CitiesUIService {
 
     final Logger slf4jLog = LoggerFactory.getLogger(CitiesUIController.class);
