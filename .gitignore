@@ -90,3 +90,4 @@ CitiesPageGradleService/Log/
 CitiesPageGradleService/build/
 HelloService/Log/
 ServiceConfigServer/src/main/resources/shared/a-addtoadd2-client.yml
+*.iml
