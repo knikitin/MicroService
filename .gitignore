@@ -83,11 +83,7 @@ crashlytics-build.properties
 fabric.properties
 
 # # Own gitignore
-AddToAdd2Service/
-AddToHelloService/Log/
-CitiesFromDBService/Log/
-CitiesPageGradleService/Log/
-CitiesPageGradleService/build/
-HelloService/Log/
-ServiceConfigServer/src/main/resources/shared/a-addtoadd2-client.yml
+CitiesDBService/Log/
+CitiesUIService/Log/
+CitiesUIService/build/
 *.iml
