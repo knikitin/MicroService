@@ -8,10 +8,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import springfox.documentation.staticdocs.Swagger2MarkupResultHandler;
 
 import java.util.Arrays;
 import java.util.List;
@@ -52,6 +54,14 @@ public class ApiDocumentation {
         this.mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
         ;
+    }
+
+    @Test
+    public void convertSwaggerToAsciiDoc() throws Exception {
+        this.mockMvc.perform(get("/v2/api-docs")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(Swagger2MarkupResultHandler.outputDirectory("src/docs/asciidoc/generated").build())
+                .andExpect(status().isOk());
     }
 
 }
