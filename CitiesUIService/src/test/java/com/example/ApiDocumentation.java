@@ -58,9 +58,10 @@ public class ApiDocumentation {
 
     @Test
     public void convertSwaggerToAsciiDoc() throws Exception {
+        String outputDir = System.getProperty("io.springfox.staticdocs.outputDir");
         this.mockMvc.perform(get("/v2/api-docs")
                 .accept(MediaType.APPLICATION_JSON))
-                .andDo(Swagger2MarkupResultHandler.outputDirectory("src/docs/asciidoc/generated").build())
+                .andDo(Swagger2MarkupResultHandler.outputDirectory(outputDir).build())
                 .andExpect(status().isOk());
     }
 
