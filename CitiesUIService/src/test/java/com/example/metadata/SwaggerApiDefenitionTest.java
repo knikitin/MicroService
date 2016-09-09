@@ -1,4 +1,4 @@
-package com.example;
+package com.example.metadata;
 
 import org.junit.Before;
 import org.junit.Test;
