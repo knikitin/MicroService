@@ -1,8 +1,10 @@
 package com.example.metadata;
 
 import com.google.common.base.Predicates;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.RequestMethod;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -22,7 +24,10 @@ import static com.google.common.collect.Lists.newArrayList;
  */
 @Configuration
 @EnableSwagger2
+@PropertySource("classpath:swagger.properties")
 public class SwaggerConfig {
+    @Value("${springfox.documentation.swagger.v2.path}")
+    private String swagger2Endpoint;
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
