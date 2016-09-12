@@ -1,0 +1,34 @@
+[introduction]
+= Introduction
+
+Cities-service is a RESTful microservice.
+
+
+[[resources]]
+= Resources
+
+
+[[resources-cities]]
+== Cities
+The Cities resource is used to list cities.
+
+[[resource-cities-list]]
+=== Listing cities
+A `GET` request lists all of the service's cities.
+
+include::{snippets}/index/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/index/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/index/http-response.adoc[]
+
+
+include::{snippets}/index/http-request.adoc[]
+
+
+include::{snippets}/index/httpie-request.adoc[]
+
