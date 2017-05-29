@@ -5,3 +5,11 @@ spring:
     config:
       uri: http://localhost:8888
       fail-fast: true
+
+---
+spring:
+  profiles: container
+  cloud:
+    config:
+      uri: http://configserver:8888
+      fail-fast: true
