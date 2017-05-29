@@ -10,7 +10,7 @@ Cities-service is a RESTful microservice.
 
 [[resources-cities]]
 == Cities
-The Cities resource is used to list people.
+The Cities resource is used to list cities.
 
 [[resource-cities-list]]
 === Listing cities
