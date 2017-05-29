@@ -4,9 +4,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5532/postgres
     username: postgres
-    password: postgres777
+    password:
     driver-class-name: org.postgresql.Driver
 
 eureka:

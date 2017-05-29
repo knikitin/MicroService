@@ -5,3 +5,14 @@ spring:
     config:
       uri: http://localhost:8888
       fail-fast: true
+
+---
+spring:
+  profiles: container
+  application:
+    name: a-citiesfromdb-client
+  cloud:
+    config:
+      uri: http://configserver:8888
+      fail-fast: true
+
