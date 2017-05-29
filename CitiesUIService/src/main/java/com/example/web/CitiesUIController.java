@@ -2,6 +2,7 @@ package com.example.web;
 
 import com.example.dto.Cities;
 import com.example.service.CitiesUIService;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class CitiesUIController {
     @Autowired
     CitiesUIService citiesUIService;
 
+    @ApiOperation(value = "", nickname = "Get all cities from other service")
     @RequestMapping(value = "/", method= RequestMethod.GET)
     public String cities( Model model) {
         slf4jLog.info("Get from DB all cities");

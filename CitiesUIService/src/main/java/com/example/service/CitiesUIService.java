@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.dto.Cities;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -10,5 +11,7 @@ import java.util.List;
 public interface CitiesUIService {
 
     List<Cities> getCities();
+
+    RestTemplate getRestTemplate();
 
 }

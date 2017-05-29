@@ -52,4 +52,9 @@ public class CitiesUIServiceImpl implements CitiesUIService {
 
         return resultList;
     }
+
+    @Override
+    public RestTemplate getRestTemplate() {
+        return restTemplate;
+    }
 }

@@ -4,14 +4,18 @@ buildscript {
     }
     repositories {
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.10.1'
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'spring-boot'
+apply plugin: 'org.asciidoctor.convert'
 
 jar {
     baseName = 'CitiesPageGradleService'
@@ -20,19 +24,15 @@ jar {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-repositories {
-    mavenCentral()
-    jcenter()
-}
-
-
 dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.cloud:spring-cloud-starter-config')
     compile('org.springframework.cloud:spring-cloud-starter-eureka')
     compile('org.springframework.boot:spring-boot-devtools')
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile("io.springfox:springfox-swagger2:2.5.0")
     compile("io.springfox:springfox-swagger-ui:2.5.0")
+    testCompile 'io.springfox:springfox-staticdocs:2.5.0'
     testCompile('org.springframework.boot:spring-boot-starter-test')
 
 }
@@ -41,4 +41,31 @@ dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:Brixton.SR5"
     }
+}
+
+ext {
+    asciiDocOutputDir = file("${buildDir}/asciidoc/generated")
+    swaggerOutputDir = file("${buildDir}/swagger")
+}
+
+test {
+    systemProperty 'io.springfox.staticdocs.outputDir', swaggerOutputDir
+}
+
+asciidoctor {
+    sourceDir = file(swaggerOutputDir)
+    sources {
+        include 'definitions.adoc', 'overview.adoc', 'paths.adoc'
+    }
+    backends = ['html5', 'pdf']
+    attributes = [
+            doctype: 'book',
+            toc: 'left',
+            toclevels: '3',
+            numbered: '',
+            sectlinks: '',
+            sectanchors: '',
+            hardbreaks: '',
+            generated: asciiDocOutputDir
+    ]
 }
